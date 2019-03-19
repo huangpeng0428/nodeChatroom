@@ -4,6 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// import './assets/css/chat.css'
+// import VueSocketio from 'vue-socket.io';
+// import socketio from 'socket.io-client';
+
+// Vue.use(VueSocketio, socketio('ws://localhost:8081'));
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
