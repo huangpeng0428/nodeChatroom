@@ -3,7 +3,9 @@
         <div class="login-wrap" v-if="!isCheckin">
           <div class="login-con">
             <h3 style="color:#fff">用户登录</h3>
-            <input type="text" placeholder="请输入昵称" id="loginName" v-model.trim="uname" @keyup.13="login">
+            <div class="inputCont">
+              <input class="socketInput" type="text" placeholder="请输入昵称" id="loginName" v-model.trim="uname" @keyup.13="login">
+            </div>
             <button class="login-btn" @click="login">登录</button>
           </div>
         </div>
@@ -52,8 +54,9 @@ export default {
     /*建立socket连接，使用websocket协议，端口号是服务器端监听端口号*/
     // alert(String(io('ws://10.8.0.85:8088'))) 
     this.$nextTick(()=> {
-      alert(io)
-      this.socket = io('ws://10.8.0.85:8088');
+      // alert(io)
+      // this.socket = io('ws://10.8.0.85:8088');
+      this.socket = io('ws://192.168.1.102:8088')
       /*登录成功*/
       this.socket.on('loginSuccess',(data) => {
         if(data.username === this.uname){
@@ -96,7 +99,7 @@ export default {
     /*登录*/
     login () {
       console.log(this.socket)
-      alert(this.socket)
+      // alert(this.socket)
       if(this.uname){
         /*向服务端发送登录事件*/
         this.socket.emit('login',{username:this.uname})
