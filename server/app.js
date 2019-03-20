@@ -1,6 +1,6 @@
 var app = require('http').createServer();
 var io = require('socket.io')(app);
-var PORT = 8081;
+var PORT = 8088;
 /*定义用户数组*/
 var users = [];
 
