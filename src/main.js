@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import './assets/css/chat.css'
+// import './assets/css/chat.css'
 // import VueSocketio from 'vue-socket.io';
 // import socketio from 'socket.io-client';
 

@@ -21,5 +21,6 @@ html,body{width:100%;height: 100%;}
   text-align: center;
   color: #2c3e50;
   height: 100%;
+  background: #e7e7e7;
 }
 </style>

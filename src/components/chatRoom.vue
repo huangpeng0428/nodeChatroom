@@ -25,7 +25,7 @@
               </div>
             </div>
           </div>
-          <div class="bottom">
+          <div class="bottom" :class="isFouson?'bottom_20':'bottom_0'">
             <input type="text" id="sendtxt" v-model.trim="inputMsg" @keyup.13="sendMessage">
             <button class="sendBtn" @click="sendMessage">发送</button>
           </div>
@@ -48,15 +48,23 @@ export default {
       socket: null,       //定义socket实例
       isCheckin: false,
       msgList:[],         //服务端返回的信息列表
+      isFouson:false
     }
   },
   mounted () {
     /*建立socket连接，使用websocket协议，端口号是服务器端监听端口号*/
     // alert(String(io('ws://10.8.0.85:8088'))) 
+    document.body.addEventListener('focusout', () => {
+      this.isFouson = false
+      document.body.scrollTop = document.body.scrollHeight;
+    });
+    document.body.addEventListener('focusin', () => {
+      this.isFouson = true
+    });
     this.$nextTick(()=> {
       // alert(io)
       // this.socket = io('ws://10.8.0.85:8088');
-      this.socket = io('ws://192.168.1.102:8088')
+      this.socket = io('ws://10.8.0.85:8088')
       /*登录成功*/
       this.socket.on('loginSuccess',(data) => {
         if(data.username === this.uname){
@@ -125,9 +133,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import url('../assets/css/chat');
-.hello {
-  height: 100%;
+.bottom_20{
+  bottom: 20px !important;
 }
+.bottom_0{
+  bottom: 0px !important;
+}
+/* .hello {
+  height: 100%;
+} */
 h1, h2 {
   font-weight: normal;
 }
